@@ -1,11 +1,9 @@
 package base;
 
 public class Veiculo {
-	//declaração de var locais (private) - atributos
 	private String placa, modelo, problema;
 	private double valorDoServico;
 	
-	//construtor recebendo valores iniciais
 	public Veiculo(String placa, String modelo, String problema,double valorDoServico) {
 		this.placa = placa;
 		this.modelo = modelo;
@@ -13,10 +11,9 @@ public class Veiculo {
 		this.valorDoServico = valorDoServico;
 	}
 	
-	//constructor vazio
 	public Veiculo() {
 	}
-
+	
 	public String getPlaca() {
 		return placa;
 	}

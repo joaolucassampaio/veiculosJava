@@ -1,11 +1,12 @@
 package base;
 import java.util.ArrayList;
+import io.InOut;
 
 public class VetVeiculo {
-	//a. Um ArrayList de Veiculo
-	ArrayList<Veiculo> arrVeiculos = new ArrayList<>();
+	//Um ArrayList de Veiculo
+	static ArrayList<Veiculo> arrVeiculos = new ArrayList<>();
 	
-	//a. Um construtor vazio
+	//Um construtor vazio
 	public VetVeiculo() {
 		
 	}
@@ -15,6 +16,7 @@ public class VetVeiculo {
 		return arrVeiculos.size();
 	}
 	
+
 	/*getPos (retorna um produto que está na posição que será passada como parâmetro. Se a posição for inválida, deve retornar null)*/
 	public Veiculo getPos(int pos) {
 		if(pos >= 0 && pos < arrVeiculos.size()) {
@@ -50,11 +52,34 @@ public class VetVeiculo {
 	/*Remoção de um Veiculo no vetor (remove o Veiculo do vetor e retorna true. Se o Veiculo não existir no vetor, retorna false).*/
     public boolean removerVeiculo(String placa) {
         int pos = pesquisaVeiculo(placa);
+        
         if (pos != -1) {
             arrVeiculos.remove(pos);
             return true;
         } else {
             return false;
+        }
+    }
+
+    public void listarVeiculos() {
+        if (arrVeiculos.isEmpty()) {
+            InOut.msgSemIcone(null, "Nenhum veículo encontrado.");
+        } else {
+            StringBuilder veiculosCadastrados = new StringBuilder();
+            
+            for (Veiculo veiculo : arrVeiculos) {
+                veiculosCadastrados.append("Placa: ")
+                    .append(veiculo.getPlaca())
+                    .append(", Modelo: ")
+                    .append(veiculo.getModelo())
+                    .append(", Problema: ")
+                    .append(veiculo.getProblema())
+                    .append(", Valor: R$ ")
+                    .append(veiculo.getValorDoServico())
+                    .append("\n");
+            }
+            
+            InOut.msgSemIcone("Veículos cadastrados na oficina:", veiculosCadastrados.toString());
         }
     }
 }

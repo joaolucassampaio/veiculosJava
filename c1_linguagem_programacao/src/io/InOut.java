@@ -26,12 +26,23 @@ public class InOut {
 	 * @param frase que sera usada para o usuario saber qual dado sera lido
 	 * @return String que foi lida
 	 */
-	public static String leString (String frase){
-		String Entrada;
-		
-		Entrada = JOptionPane.showInputDialog (null, frase, "Entrada de dados", 
-											   JOptionPane.QUESTION_MESSAGE);
-		return Entrada;
+	public static String leString(String frase) {
+	    String entrada;
+	    boolean erro;
+
+	    do {
+	        entrada = JOptionPane.showInputDialog(null, frase, "Entrada de dados", JOptionPane.QUESTION_MESSAGE);
+
+	        // Verifica se a entrada é nula ou vazia e mostra mensagem de erro se for o caso
+	        if (entrada == null || entrada.trim().isEmpty()) {
+	            JOptionPane.showMessageDialog(null, "Entrada inválida! Por favor, não deixe o campo vazio.", "   >>>      ERRO     <<<", JOptionPane.ERROR_MESSAGE);
+	            erro = true;
+	        } else {
+	            erro = false;
+	        }
+	    } while (erro);
+
+	    return entrada;
 	}
 	
 	/**
